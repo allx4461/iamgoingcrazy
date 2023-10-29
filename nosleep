@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import (QApplication, QLabel, QPushButton, QVBoxLayout,
 font.init()
 #pygame.init()
 #что это за месиво
-#ввод по идее должен был осущ как два числа через пробел
+#ввод по идее должен был осущ как 3 числа через пробел
 #то есть 8 часов это 800 (8ч 00мин)
 window=display.set_mode((720,320))
 display.set_caption('не смеяться')
