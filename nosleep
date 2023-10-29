@@ -1,0 +1,78 @@
+from pygame import *
+from random import *
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (QApplication, QLabel, QPushButton, QVBoxLayout,
+                             QWidget)
+font.init()
+#pygame.init()
+#что это за месиво
+#ввод по идее должен был осущ как два числа через пробел
+#то есть 8 часов это 800 (8ч 00мин)
+window=display.set_mode((720,320))
+display.set_caption('не смеяться')
+window_width=700
+color=(90,250,60)
+window.fill((0,0,0))
+Font1=font.Font(None,30)
+nosleep=True
+rrect = Rect(250,150,100,100)
+rect_color_norm = (40,40,85)
+rect_color=(150,0,85)
+show=True
+#переменные после ввода
+delta=''
+rate=''
+text_delta=QLabel('Отклонение от нормы:')
+text_rate=QLabel('Оценка:')
+# Координаты и размеры кнопки ввода
+button_x = 300
+button_y = 250
+button_width = 200
+button_height = 100
+'''butn=Qton_text = font.render("Input Data", True, WHITE)PushButton('Ввести информацию')'''
+button_count=QPushButton('Ввод')
+
+v_line=QVBoxLayout
+window.set_layout(v_line)
+app=QApplication([])
+line.addWidget(button_count, alignment = Qt.AlignCenter)
+line.addWidget(text_delta, alignment = Qt.AlignCenter)
+line.addWidget(text_rate, alignment = Qt.AlignCenter)
+
+#дефы
+def info():#организация ввода текста 
+    need_input=True
+def delta(input_text):#возвращает разницу трехзн числом(инт)
+    input_text=input_text[0]+input_text[:1]
+    if int(input_text)>=800:
+        delta= int(input_text)-800
+    else:
+        delta=800-int(input_text)
+    return delta 
+def rate(input_text):#считает процент нормальности
+    #добавить переменную меньше или больше нормы для надписи стоит спать больше или меньше
+    rate=str(delta(input_text)/8)+'%'
+    return rate
+def draw_stats(input_text):
+    rect_norm=Rect(160,50,100,100)
+    draw.rect(window,rect_color_norm,rect_norm)
+    k=8+(delta(input_text)//100)
+    rect=Rect(2*k,50,250,100)
+    draw.rect(window,rect_color,rect)
+need_input=False
+input_text=''
+
+while show:
+    for event in event.get():
+        if e.type == QUIT:
+            show=False
+            app.exec_()
+        button_count.clicked.connect(info)
+        if need_input and event.type==pygame.KEYDOWN:
+                if event.key==K.RETURN:
+                   need_input=False
+                   input_text=''
+                else:
+                    input_text+=event.unicode
+
+    display.update()
